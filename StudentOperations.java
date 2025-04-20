@@ -124,4 +124,37 @@ public class StudentOperations {
     }
   }
 
+  public static void searchByName() {
+    try {
+      Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+      PreparedStatement stmt = conn.prepareStatement("SELECT * FROM student WHERE name LIKE ?");
+
+      try (Scanner scan = new Scanner(System.in)) {
+        System.out.println("Enter name to search: ");
+        String name = scan.nextLine();
+
+        stmt.setString(1, "%" + name + "%"); // Allows partial matches
+        ResultSet rs = stmt.executeQuery();
+
+        boolean found = false;
+        System.out.println("\nSearch Results:");
+        while (rs.next()) {
+          found = true;
+          System.out.println("PRN: " + rs.getInt("PRN"));
+          System.out.println("Name: " + rs.getString("name"));
+          System.out.println("Branch: " + rs.getString("branch"));
+          System.out.println("Batch: " + rs.getString("batch"));
+          System.out.println("CGPA: " + rs.getFloat("cgpa") + "\n");
+        }
+
+        if (!found) {
+          System.out.println("\nNo students found with name containing: " + name);
+        }
+      }
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
 }
