@@ -3,10 +3,10 @@ import java.util.*;
 
 public class StudentOperations {
 
-  // Database connection details – update as needed
-  private static final String URL = "jdbc:mysql://localhost:3306/your_database";
-  private static final String USER = "your_username";
-  private static final String PASSWORD = "your_password";
+  // Database connection details 
+  private static final String URL = "jdbc:mysql://localhost:3306/student-db";
+  private static final String USER = "root";
+  private static final String PASSWORD = "root@123";
 
   public static void insertStudent() {
     try {
