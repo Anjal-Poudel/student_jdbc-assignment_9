@@ -1,6 +1,6 @@
 # Student JDBC - Assignment 9
 
-This repository contains the implementation for **Assignment 9** in Java, focusing on managing and processing student data using JDBC (Java Database Connectivity). The project demonstrates how to connect to a database, perform CRUD (Create, Read, Update, Delete) operations, and handle student records efficiently.
+This repository contains the implementation for Student Data Entry with JDBC in Java, focusing on managing and processing student data using JDBC (Java Database Connectivity). The project demonstrates how to connect to a database, perform CRUD (Create, Read, Update, Delete) operations, and handle student records efficiently.
 
 ## 📁 Project Structure
 
@@ -59,10 +59,3 @@ student_jdbc-assignment_9/
 - Delete student records
 - Handle SQL exceptions and ensure resource management
 
-## 📚 License
-
-This project is intended for educational purposes as part of Assignment 9 in a Java programming course.
-
----
-
-Feel free to explore and modify the code to enhance functionality or integrate additional features.
