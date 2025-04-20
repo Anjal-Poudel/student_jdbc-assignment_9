@@ -49,4 +49,27 @@ public class StudentOperations {
     }
   }
 
+  public static void displayStudent() {
+    try {
+      Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+      Statement stmt = conn.createStatement();
+      ResultSet rs = stmt.executeQuery("SELECT * FROM student");
+
+      System.out.println("\nAll Students:");
+      while (rs.next()) {
+        System.out.println("PRN: " + rs.getInt("PRN"));
+        System.out.println("Name: " + rs.getString("name"));
+        System.out.println("Branch: " + rs.getString("branch"));
+        System.out.println("Batch: " + rs.getString("batch"));
+        System.out.println("CGPA: " + rs.getFloat("cgpa"));
+        System.out.println("----------------------------");
+      }
+
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+
 }
