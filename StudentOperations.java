@@ -95,4 +95,33 @@ public class StudentOperations {
     }
   }
 
+  public static void searchByPRN() {
+    try {
+      Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+      PreparedStatement stmt = conn.prepareStatement("SELECT * FROM student WHERE PRN = ?");
+
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Enter PRN to search: ");
+      int prn = scan.nextInt();
+
+      stmt.setInt(1, prn);
+      ResultSet rs = stmt.executeQuery();
+
+      if (rs.next()) {
+        System.out.println("\nStudent Found:");
+        System.out.println("PRN: " + rs.getInt("PRN"));
+        System.out.println("Name: " + rs.getString("name"));
+        System.out.println("Branch: " + rs.getString("branch"));
+        System.out.println("Batch: " + rs.getString("batch"));
+        System.out.println("CGPA: " + rs.getFloat("cgpa") + "\n");
+      } else {
+        System.out.println("\nNo student found with PRN: " + prn);
+      }
+
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
 }
